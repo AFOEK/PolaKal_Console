@@ -114,7 +114,7 @@ bool Terdapat(char kata[], KosaKata *Daftar) {
 }
 
 main() {
-	char Kalimat[100]="He eats unheaalthy food", **Kata, Pola[50], Pola2[50];
+	char Kalimat[100]="My pet eats unhealthy food", **Kata, Pola[20][5];
 	int JlhKata, i, j;
 	bool VerbFound;
 
@@ -128,7 +128,7 @@ main() {
 	SubjectPronoun=PossesiveAdjective=Verb=Noun=Adjective=Adverb=NULL;
 	
 	SubjectPronoun		=BacaDaftarKata("SubjectPronouns.txt");			tSP=Tail;
-	PossesiveAdjective	=BacaDaftarKata("PossesiveAdjective.txt");		tPA=Tail;
+	PossesiveAdjective	=BacaDaftarKata("PossesiveAdjectives.txt");		tPA=Tail;
 	Verb				=BacaDaftarKata("Wordlist-Verbs-All.txt");		tV=Tail;
 	Noun				=BacaDaftarKata("Wordlist-Nouns-All.txt");		tN=Tail;
 	Adjective			=BacaDaftarKata("Wordlist-Adjectives-All.txt");	tAdj=Tail;
@@ -165,40 +165,20 @@ main() {
 	/*First Parsing - Identifying Words*/	
 	for(i=0; i<JlhKata; i++) {
 		//printf("%s\n", Kata[i]);
-		if ( Terdapat(Kata[i], SubjectPronoun) ) {
-			Pola[j]='S'; j++;
-			Pola[j]='P'; j++;
-			Pola[j]=' ';
-		}
-		else if ( Terdapat(Kata[i], PossesiveAdjective) ) {
-			Pola[j]='P'; j++;
-			Pola[j]='A'; j++;
-			Pola[j]=' ';
-		}
-		else if ( Terdapat(Kata[i], Verb) ) {
-			Pola[j]='V'; j++;
-			Pola[j]=' ';
-		}
-		else if ( Terdapat(Kata[i], Noun) ){
-			Pola[j]='N'; j++;
-			Pola[j]=' ';
-		}
-		else if ( Terdapat(Kata[i], Adjective) ) {
-			Pola[j]='A'; j++;
-			Pola[j]='d'; j++;
-			Pola[j]='j'; j++;
-			Pola[j]=' ';
-		}
-		else if ( Terdapat(Kata[i], Adverb) ){
-			Pola[j]='A'; j++;
-			Pola[j]='d'; j++;
-			Pola[j]='v'; j++;
-			Pola[j]=' ';
-		}
-		
+		if ( Terdapat(Kata[i], SubjectPronoun) ) 
+			strcpy(Pola[j], "SP");
+		else if ( Terdapat(Kata[i], PossesiveAdjective) ) 
+			strcpy(Pola[j], "PA");
+		else if ( Terdapat(Kata[i], Verb) ) 
+			strcpy(Pola[j], "V");
+		else if ( Terdapat(Kata[i], Noun) )
+			strcpy(Pola[j], "N");
+		else if ( Terdapat(Kata[i], Adjective) ) 
+			strcpy(Pola[j], "Adj");
+		else if ( Terdapat(Kata[i], Adverb) )
+			strcpy(Pola[j], "Adv");		
 		else
-			Pola[j]='X'; j++;
-			Pola[j]=' ';
+			strcpy(Pola[j], "X");
 		j++; 
 	}
 	
@@ -213,11 +193,13 @@ main() {
 	}
 	*/
 	
+	printf("Pola  Kalimat: ");
 	//printf("%i\n", j);
-	Pola[j]=0;
-	printf("Pola  Kalimat: %s\n", Pola);
-	printf("Pola2 Kalimat: %s\n", Pola2);
-	
+	/*printf("Pola  Kalimat: %s\n", Pola);
+	printf("Pola2 Kalimat: %s\n", Pola2);*/
+	for(i=0; i<j; i++)
+		printf("%s ", Pola[i]);
+		
 	/*
 	if ( strcmp(Pola, "SPO")==0 )   //Pola=="SPO"
 		printf("Pola kalimat sudah benar\n");
