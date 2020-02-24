@@ -1,0 +1,24 @@
+am					
+is		isn't			
+are		aren't		're not
+was		wasn't			
+were		weren't			
+being					
+been					
+does					
+do		don't			
+did		didn't			
+has		hasn't			
+have		haven't			
+had		hadn't			
+having					
+can		can't			
+could		couldn't		
+may					
+might					
+must		mustn't			
+ought to				
+shall					
+should					
+will					
+would					
